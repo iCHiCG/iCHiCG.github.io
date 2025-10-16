@@ -1,0 +1,784 @@
+<!doctype html>
+<html lang="th">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <link rel="icon" type="image" href="img/image0.png">
+  <title>Pattanasak Portfolio</title>
+  <meta name="description" content="Pattanasak Portfolio" />
+  <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+   
+
+
+    /* ====== Simple reset ====== */
+    * {box-sizing: border-box}
+    html,body {height:100%}
+    body {
+      margin:0;
+      font-family: 'Kanit', Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      color:#070056;
+      background: linear-gradient(180deg,#ffffff 0%, #f8fafc 100%);
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      scroll-behavior:smooth;
+      line-height:1.5;
+    }
+
+    /* ====== Layout ====== */
+    .container {max-width:1100px;margin:0 auto;padding:24px}
+    header {position:fixed;left:0;right:0;top:0;z-index:60;background:#0080ffa7;backdrop-filter:blur(5px);border-bottom:1px solid rgba(15,23,42,0.06)}
+    .nav-inner {display:flex;align-items:center;justify-content:space-between;max-width:1100px;margin:0 auto;padding:10px 24px}
+    .brand {display:flex;align-items:center;gap:12px}
+    .logo {
+      width:44px;height:44px;border-radius:12px;
+      background:rgba(red, green, blue, alpha);
+      display:inline-flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:18px;
+      box-shadow:0 6px 20px rgba(99,102,241,0.12);
+      transform-origin:center;
+      transition:transform .36s cubic-bezier(.2,.9,.3,1)
+    }
+    .brand-name {font-weight:600;font-size:14px}
+    nav ul {display:flex;gap:8px;list-style:none;margin:0;padding:0;align-items:center}
+    nav button, .cta {
+      background:none;border:0;padding:10px 12px;border-radius:10px;font-size:14px;cursor:pointer;
+    }
+    nav button:hover, .cta:hover {background:rgba(15,23,42,0.04)}
+    .cta {background:#0051b3;color:#ffffff;box-shadow:0 8px 20px rgba(51, 0, 255, 0.12)}
+    .hamburger {display:none}
+
+    main {padding-top:86px}
+
+    /* ====== Hero ====== */
+    .hero {display:grid;grid-template-columns:1fr;gap:20px;align-items:center;padding:48px 24px}
+    .hero-inner {display:flex;flex-direction:column;gap:18px}
+    .title {font-size:34px;font-weight:800;line-height:1.02}
+    .accent {color:#2492ff}
+    .subtitle {color:#475569;max-width:700px}
+    .hero-actions {display:flex;gap:12px;margin-top:8px}
+    .badge {display:inline-flex;align-items:center;gap:8px;padding:6px 10px;background:#ecfeff;border-radius:999px;font-size:13px;color:#064e3b;width:max-content}
+
+    .card {
+      background:linear-gradient(180deg,#fff,#ffffff);
+      border-radius:16px;padding:16px;border:1px solid rgba(15,23,42,0.06);
+      box-shadow:0 8px 30px rgba(2,6,23,0.04)
+    }
+    
+    .card.hero-card {   /* เพิ่ม class แยกเฉพาะ hero */
+  background: none;
+  border: none;
+  box-shadow: none;
+  padding: 0;   /* ถ้าอยากให้รูปเต็ม */
+}
+
+
+    /* hero image */
+    .hero-art {
+  width:50%;
+  max-width:420px;
+  margin:auto;
+  border-radius:14px;
+  height:auto;
+  background: none;   /* <-- เอาพื้นหลังออกจ้ะ */
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:14px;
+  color:#94a3b8;
+}
+
+
+    /* ====== Sections ====== */
+    section {padding:48px 0}
+    h2 {font-size:20px;margin:0 0 8px 0;font-weight:700}
+    p.lead {color:#64748b;margin:0 0 16px 0}
+
+    /* Project grid */
+    .grid {display:grid;gap:16px}
+    .grid.cols-3 {grid-template-columns:repeat(3,1fr)}
+    .grid.cols-2 {grid-template-columns:repeat(2,1fr)}
+    .project {
+      background:#fff;border-radius:12px;padding:14px;border:1px solid rgba(15,23,42,0.04);
+      transition:transform .32s cubic-bezier(.2,.9,.3,1), box-shadow .32s;
+      transform-origin:center;
+      overflow:hidden;
+    }
+    .project:hover {transform:translateY(-8px);box-shadow:0 18px 40px rgba(2,6,23,0.08)}
+    .project-thumb {height:160px;border-radius:10px;background:#eef2ff;display:flex;align-items:center;justify-content:center;color:#93c5fd;margin-bottom:10px}
+
+    /* Skills */
+    .skills-grid {display:flex;flex-wrap:wrap;gap:10px}
+    .skill {padding:10px 12px;border-radius:10px;background:#fff;border:1px solid rgba(15,23,42,0.04);min-width:120px;text-align:center}
+
+    /*เปลี่ยนปุ่มทั้งหมดน้า*/
+    form {display:grid;gap:12px}
+    input,textarea {padding:12px;border-radius:10px;border:1px solid rgba(15,23,42,0.08);outline:none}
+    input:focus,textarea:focus {box-shadow:0 6px 18px rgba(79,70,229,0.08);border-color:rgba(79,70,229,0.16)}
+    .btn {background:#0051b3;color:#fff;padding:12px 16px;border-radius:10px;border:0;cursor:pointer}
+
+    footer {padding:24px 0;color:#94a3b8;text-align:center;border-top:1px solid rgba(15,23,42,0.04);margin-top:32px}
+
+    /* ====== Animations & reveal ====== */
+    .float {animation:float 3s ease-in-out infinite}
+    @keyframes float {
+      0% {transform:translateY(0)}
+      50% {transform:translateY(-15px)}
+      100% {transform:translateY(0)}
+    }
+
+    .fade-in {opacity:0;transform:translateY(12px);transition:opacity .6s ease, transform .6s ease}
+    .in-view {opacity:1;transform:none}
+
+    /* ====== Responsive ====== */
+    @media (min-width:768px) {
+      .hero {grid-template-columns:1fr 420px;padding:64px 24px}
+      nav ul {gap:12px}
+      .hamburger {display:none}
+    }
+    @media (max-width:767px) {
+      .nav-inner {padding:8px 16px}
+      nav ul {display:none}
+      .hamburger {display:inline-flex}
+      .grid.cols-3 {grid-template-columns:repeat(2,1fr)}
+      .title {font-size:28px}
+    }
+    @media (max-width:520px) {
+      .grid.cols-3 {grid-template-columns:1fr}
+      .hero-art {height:200px}
+    }
+
+/* อนิเมชั่นสั่นเล็กๆ */
+@keyframes shake {
+  0% { transform: translate(0px, 0px) rotate(0deg); }
+  25% { transform: translate(2px, -2px) rotate(-2deg); }
+  50% { transform: translate(-2px, 2px) rotate(2deg); }
+  75% { transform: translate(2px, 2px) rotate(-1deg); }
+  100% { transform: translate(0px, 0px) rotate(0deg); }
+}
+
+.float-slow {
+  animation: shake 2s ease-in-out infinite;
+}
+
+/* container ของรูป + กรอบ */
+.profile-pic {
+  position: relative;
+  width: 200px;
+  height: 200px;
+}
+
+/* รูปโปรไฟล์คงที่ */
+.profile-pic img {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+  display: block;
+  z-index: 2;
+  background: white;
+}
+
+/* กรอบสายรุ้งหมุน */
+.rainbow-border {
+  position: absolute;
+  top: -4px; left: -4px; right: -4px; bottom: -4px; /* ทำให้ล้อมรูปพอดี */
+  border-radius: 50%;
+  border: 4px solid transparent;
+  background: conic-gradient(rgb(255, 255, 255), rgb(0, 208, 255), rgb(45, 206, 255), rgb(219, 255, 37));
+  z-index: 1;
+  animation: rotate-border 5s linear infinite;
+}
+
+/* หมุนกรอบ */
+@keyframes rotate-border {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+.typing-effect {
+  display: inline-block;
+  white-space: nowrap;
+  overflow: hidden;
+  border-right: 3px solid #4f46e5; /* cursor กระพริบ */
+  font-family: monospace;
+  animation: typing 5s steps(22) forwards, blink 0.75s step-end infinite;
+}
+
+/* พิมพ์ทีละตัว */
+@keyframes typing {
+  from { width: 0 }
+  to { width: 17ch } /* จำนวนตัวอักษร Pattanasak Portfolio */
+}
+
+/* cursor กระพริบ */
+@keyframes blink {
+  0%, 100% { border-color: transparent }
+  50% { border-color: #0a0045 }
+}
+
+.contact-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 14px;
+  border-radius: 10px;
+  border: 1px solid rgba(15,23,42,0.06);
+  text-decoration: none;
+  color: #070056;
+  font-weight: 500;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.contact-btn img {
+  display: block;
+}
+
+.contact-btn:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+}
+
+/* ตัวอย่างสีแบรนด์ */
+.contact-btn.youtube { background:#ff0000; color:white; }
+.contact-btn.facebook { background:#1877f2; color:white; }
+.contact-btn.instagram { background:linear-gradient(45deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888); color:white; }
+.contact-btn.gmail { background:#d44638; color:white; }
+.contact-btn.phone { background:#10b981; color:white; }
+
+/*ปุ่มวิวจร้า*/
+.btn-view {
+  padding: 8px 14px;
+  border-radius: 10px;
+  border: 1px solid rgba(15,23,42,0.1);
+  background: white;
+  color: #0f172a;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.btn-view:hover {
+  background: #0066ff;
+  color: white;
+  transform: translateY(-3px);
+  box-shadow: 0 4px 12px rgba(99,102,241,0.3);
+}
+
+
+.btn-view2 {
+  padding: 8px 14px;
+  border-radius: 10px;
+  border: 1px solid rgba(15,23,42,0.1);
+  background: #0066ff;
+  color: #ffffff;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.btn-view2:hover {
+  background: #180076;
+  color: white;
+  transform: translateY(-3px);
+  box-shadow: 0 4px 12px rgba(99,102,241,0.3);
+}
+
+
+/*แกรรอรี่*/
+ .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+    }
+
+    /* Popup */
+    .popup {
+      display: none;
+      position: fixed;
+      z-index: 100;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0,0,0,0.8);
+      justify-content: center;
+      align-items: center;
+    }
+
+    .popup img {
+      max-width: 90%;
+      max-height: 80%;
+      border-radius: 12px;
+      animation: fadeIn 0.3s;
+    }
+
+    .popup span {
+      position: absolute;
+      top: 20px;
+      right: 40px;
+      font-size: 40px;
+      color: white;
+      cursor: pointer;
+    }
+
+    @keyframes fadeIn {
+      from {opacity: 0;}
+      to {opacity: 1;}
+    }
+
+/* Popup กล่องเพลง */
+  .music-popup {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background: white;
+    border-radius: 16px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    z-index: 999;
+    animation: fadeIn 0.5s;
+  }
+
+  .music-popup h3 {
+    margin: 0;
+    font-size: 16px;
+    color: #111827;
+  }
+
+  .music-btn {
+    background:linear-gradient(180deg,#6200ff,#0004ff);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    padding: 8px 14px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: 0.2s;
+  }
+
+  .music-btn:hover {
+    background:linear-gradient(180deg,#0037ff,#6200ff);
+  }
+
+  @keyframes fadeIn {
+    from {opacity: 0; transform: translateY(20px);}
+    to {opacity: 1; transform: translateY(0);}
+  }
+    
+/* Mobile Menu (สไตล์ใหม่) */
+#mobileMenu {
+  display: none;
+  flex-direction: column;
+  padding: 16px;
+  background: rgba(255,255,255,0.98);
+  backdrop-filter: blur(10px);
+  border-top: 1px solid rgba(15,23,42,0.06);
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+  animation: slideDown 0.4s ease forwards;
+  transform-origin: top center;
+  z-index: 50;
+}
+
+/* ปุ่มในเมนูมือถือ */
+#mobileMenu button {
+  background: linear-gradient(90deg, #0066ff, #009dff);
+  color: white;
+  border: none;
+  padding: 12px;
+  border-radius: 10px;
+  font-size: 15px;
+  font-weight: 500;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  transition: all 0.3s ease;
+}
+
+#mobileMenu button:hover {
+  background: linear-gradient(90deg, #0051b3, #007aff);
+  transform: translateY(-2px);
+}
+
+/* อนิเมชันเปิดเมนู */
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: scaleY(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scaleY(1);
+  }
+}
+
+
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="nav-inner">
+    <div class="brand">
+      <div class="logo" id="logo"><img src="img/ichi.png" width="120" height="auto"></div>
+      <div>
+        <div class="brand-name" id="brandName">Pattanasak Portfolio</div>
+        <div style="font-size:12px;color:#475569">Chumphol Phonphisai School</div>
+      </div>
+    </div>
+
+    <nav>
+      <ul id="navList">
+         <li><button data-target="about">Home</button></li>
+        <li><button data-target="profile">Profile</button></li>
+        <li><button data-target="projects">Projects</button></li>
+        <li><button data-target="skills">Skills</button></li>
+        <li><button data-target="contact">Contact</button></li>
+        <li><button class="cta" data-target="contact">Send a message</button></li>
+      </ul>
+      <button class="hamburger" id="hambtn" aria-label="menu">☰</button>
+    </nav>
+  </div>
+  <!-- mobile menu -->
+  <div id="mobileMenu" style="display:none;padding:8px 16px;border-top:1px solid rgba(15,23,42,0.04);background:rgba(255,255,255,0.96)">
+    <div style="display:flex;flex-direction:column;gap:6px">
+      <button data-target="about">🏠Home</button>
+      <button data-target="profile">👤Profile</button>
+      <button data-target="projects">💻Projects</button>
+      <button data-target="skills">⚙️Skills</button>
+      <button data-target="contact">📞Contact</button>
+    </div>
+  </div>
+</header>
+
+<main class="container">
+  <!-- HERO -->
+  <section id="about" class="hero">
+    <div class="hero-inner card fade-in">
+      <div class="badge">Ready!</div>
+      <h1 class="title">Hello! Welcome to <span class="accent typing-effect">Pattanasak Portfolio</span></h1>
+      <p class="subtitle">คนที่น่ารักที่สุดในโลก</p>
+
+      <div class="hero-actions">
+        <button class="btn-view2" onclick="scrollToId('projects')">Ready</button>
+        <button class="btn-view" onclick="scrollToId('contact')">Contact</button>
+      </div>
+
+      <div style="margin-top:14px;color:#475569;font-size:14px">นายพัฒนศักดิ์ ชัยรัติเศรษฐกุล จาก โรงเรียนชุมพลโพนพิสัย จ.หนองคาย</div>
+    </div>
+
+    <div class="card hero-card float fade-in" style="justify-self:center;align-self:center">
+  <div class="hero-art">
+    <img src="img/yuni.png" width="400" height="auto">
+  </div>
+</div>
+
+  </section>
+<section id="profile" style="padding:48px 24px;display:flex;align-items:center;gap:32px;flex-wrap:wrap;">
+  <!-- กรอบสายรุ้งหมุน -->
+  <div class="profile-pic float-slow">
+    <img src="img/PF.png" alt="Profile">
+    <div class="rainbow-border"></div>
+  </div>
+
+  <!-- ประวัติส่วนตัว -->
+  <div class="profile-info" style="max-width:600px;">
+    <h2>My Profile</h2>
+    <p class="lead">ประวัติส่วนตัว</p>
+    <ul style="list-style:none;padding:0;line-height:1.6;">
+      <li><strong>ชื่อ:</strong> นายพัฒนศักดิ์ ชัยรัติเศรษฐกุล</li>
+       <li><strong>ชื่อเล่น:</strong> ยูริ</li>
+      <li><strong>โรงเรียน:</strong> ชุมพลโพนพิสัย</li>
+      <li><strong>เกิดวันที่:</strong> 7 ธันวาคม 2550</li>
+      <li><strong>ความสนใจ:</strong> คอมพิวเตอร์, การเขียนโปรแกรม, การออกแบบเว็บไซต์</li>
+      <li><strong>เป้าหมาย:</strong> พัฒนาทักษะด้าน Frontend และ UI/UX Design</li>
+    </ul>
+  </div>
+</section>
+
+
+
+  <!-- PROJECTS -->
+  <section id="projects">
+    <h2>Projects</h2>
+    <p class="lead">ผลงานที่ภาคภูมิใจ</p>
+
+    <div class="grid cols-3" id="projectsGrid">
+      <article class="project fade-in">
+        <div class="project-thumb">
+          <img src="img/WEB1.png" width="auto" height="120">
+        </div>
+        <h3 style="margin:0 0 6px 0">เว็บสุ่มอาหาร วันนี้กินอะไรดี</h3>
+        <p style="margin:0;color:#64748b;font-size:14px">หากคุณกำลังประสบปัญหา วันนี้จะกินข้าวกับอะไรดี เว็บนี้สามารถช่วยคุณได้แน่นอน!</p>
+        <div style="display:flex;gap:8px;margin-top:12px">
+          <button class="btn-view" onclick="openPopup('img/WEB1.png')">View</button>
+          <a href="https://testwebwannikinaraide.web.app/" class="btn-view" style="padding:8px 10px">เข้าใช้งาน</a>
+        </div>
+      </article>
+<!-- Popup -->
+  <div id="popupBox" class="popup" onclick="closePopup()">
+    <span>&times;</span>
+    <img id="popupImg" src="">
+  </div>
+
+  <script>
+    function openPopup(src) {
+      const popup = document.getElementById("popupBox");
+      const img = document.getElementById("popupImg");
+      img.src = src;
+      popup.style.display = "flex";
+    }
+
+    function closePopup() {
+      document.getElementById("popupBox").style.display = "none";
+    }
+  </script>
+
+      <article class="project fade-in">
+        <div class="project-thumb">ภาพโปรเจค 2</div>
+        <h3 style="margin:0 0 6px 0">Project Title 2</h3>
+        <p style="margin:0;color:#64748b;font-size:14px">คำอธิบาย</p>
+        <div style="display:flex;gap:8px;margin-top:12px">
+         <button class="btn-view">View</button>
+          <a href="#" class="btn-view" style="padding:8px 10px">ดูเพิ่มเติม</a>
+        </div>
+      </article>
+
+      <article class="project fade-in">
+        <div class="project-thumb">ภาพโปรเจค 2</div>
+        <h3 style="margin:0 0 6px 0">Project Title 2</h3>
+        <p style="margin:0;color:#64748b;font-size:14px">คำอธิบาย</p>
+        <div style="display:flex;gap:8px;margin-top:12px">
+         <button class="btn-view">View</button>
+          <a href="#" class="btn-view" style="padding:8px 10px">ดูเพิ่มเติม</a>
+        </div>
+      </article>
+  
+       <article class="project fade-in">
+        <div class="project-thumb">ภาพโปรเจค 2</div>
+        <h3 style="margin:0 0 6px 0">Project Title 2</h3>
+        <p style="margin:0;color:#64748b;font-size:14px">คำอธิบาย</p>
+        <div style="display:flex;gap:8px;margin-top:12px">
+         <button class="btn-view">View</button>
+          <a href="#" class="btn-view" style="padding:8px 10px">ดูเพิ่มเติม</a>
+        </div>
+      </article>
+
+      <!-- เพิ่มการ์ดโปรเจคเพิ่มเติมได้ตามต้องการ -->
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section id="skills">
+    <h2>Skills</h2>
+    <p class="lead">ทักษะ</p>
+
+    <div class="skills-grid card fade-in" style="padding:12px">
+      
+      <div class="skill">HTML / CSS</div>
+      
+      
+      
+      
+    </div>
+  </section>
+
+  <section id="contact">
+  <h2>Contact</h2>
+  <p class="lead">ช่องทางการติดต่อ</p>
+  
+  <div class="card fade-in" style="display:flex;flex-wrap:wrap;gap:16px;padding:16px;">
+    <!-- YouTube -->
+    <a href="https://www.youtube.com/@ITz1CG" target="_blank" class="contact-btn youtube">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/YouTube_full-color_icon_%282017%29.svg/2560px-YouTube_full-color_icon_%282017%29.svg.png" alt="YouTube" width="24" height="24">
+      <span>YouTube</span>
+    </a>
+
+    <!-- Facebook -->
+    <a href="https://www.facebook.com/pattanasak.yu/" target="_blank" class="contact-btn facebook">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/0/05/Facebook_Logo_%282019%29.png" alt="Facebook" width="24" height="24">
+      <span>Facebook</span>
+    </a>
+
+    <!-- Instagram -->
+    <a href="https://www.instagram.com/yu.ri_.p/" target="_blank" class="contact-btn instagram">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram" width="24" height="24">
+      <span>Instagram</span>
+    </a>
+
+    <!-- Gmail -->
+    <a href="chichan200007@gmail.com" class="contact-btn gmail" onclick="copyEmail(event)">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/7/7e/Gmail_icon_%282020%29.svg" alt="Gmail" width="24" height="24">
+      <span>Click to copy</span>
+    </a>
+<!-- ข้อความแจ้งเตือนจ้า -->
+<div id="copyAlert" style="
+  display:none;
+  position:fixed;
+  bottom:30px;
+  left:50%;
+  transform:translateX(-50%);
+  background:#4ade80;
+  color:white;
+  padding:10px 18px;
+  border-radius:8px;
+  box-shadow:0 4px 10px rgba(0,0,0,0.2);
+  font-size:14px;
+  animation:fadeInOut 2s;
+">
+  ✅ Copied!
+</div>
+
+<script>
+  function copyEmail(event) {
+    event.preventDefault(); // ไม่ให้ลิงทำงาน
+    const email = "chichan200007@gmail.com";
+    navigator.clipboard.writeText(email).then(() => {
+      const alertBox = document.getElementById("copyAlert");
+      alertBox.style.display = "block";
+      setTimeout(() => alertBox.style.display = "none", 2000);
+    });
+  }
+</script>
+
+<style>
+  @keyframes fadeInOut {
+    0% {opacity: 0; transform: translate(-50%, 20px);}
+    10%, 90% {opacity: 1; transform: translate(-50%, 0);}
+    100% {opacity: 0; transform: translate(-50%, 20px);}
+  }
+
+
+</style>
+    <!-- Phone -->
+    <a href="tel:+66820265742" class="contact-btn phone">
+      <img src="img/phone-icon-946.png" alt="Phone" width="auto" height="24">
+      <span>Phone number</span>
+    </a>
+  </div>
+</section>
+
+<h2>Send a message to Yuri</h2>
+
+
+    <div class="card fade-in">
+      <form id="contactForm" onsubmit="handleSubmit(event)">
+        <input type="text" id="name" placeholder="Name*" required />
+        <input type="email" id="email" placeholder="Email*" required />
+        <textarea id="message" placeholder="Text here*" rows="6" required></textarea>
+        <div style="display:flex;gap:8px;flex-wrap:wrap">
+          <button type="submit"  class="btn-view2">Send</button>
+          <a href="img/kku (3).pdf"class="btn-view">Download Portfolio</a>
+        </div>
+      </form>
+
+      
+    </div>
+  </section>
+
+ <!-- Popup เพลง -->
+  <div class="music-popup" id="musicPopup">
+    <h3>Now Playing 🎧</h3>
+    <audio id="musicPlayer" autoplay loop>
+      <source src="img/rubychan.mp3" type="audio/mpeg">
+      เบราว์เซอร์ของคุณไม่รองรับการเล่นเพลงเจ้าค่ะ
+    </audio>
+    <button class="music-btn" id="toggleBtn" onclick="toggleMusic()">เล่นเพลงตรงนี้⏸️</button>
+  </div>
+
+  <script>
+    const player = document.getElementById("musicPlayer");
+    const btn = document.getElementById("toggleBtn");
+
+    
+
+    function toggleMusic() {
+      if (player.paused) {
+        player.play();
+        btn.textContent = "หยุดเพลง ⏸️";
+      } else {
+        player.pause();
+        btn.textContent = "เล่นต่อ ▶️";
+      }
+    }
+  </script>
+
+  <footer>
+    © <span id="year"></span> Pattanasak Chairatsettagool
+  </footer>
+</main>
+
+<script>
+  // small helpers
+  function scrollToId(id){
+    const el = document.getElementById(id);
+    if(el) el.scrollIntoView({behavior:'smooth',block:'start'});
+  }
+
+  // nav buttons
+  document.querySelectorAll('button[data-target]').forEach(btn=>{
+    btn.addEventListener('click', ()=> scrollToId(btn.getAttribute('data-target')));
+  });
+
+  // mobile menu toggle
+  const hambtn = document.getElementById('hambtn');
+  const mobileMenu = document.getElementById('mobileMenu');
+  hambtn && hambtn.addEventListener('click', ()=>{
+    const showing = mobileMenu.style.display === 'block';
+    mobileMenu.style.display = showing ? 'none' : 'block';
+  });
+
+  // fade-in on scroll (IntersectionObserver)
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting) e.target.classList.add('in-view');
+    });
+  }, {threshold:0.12});
+  document.querySelectorAll('.fade-in').forEach(el => io.observe(el));
+
+  // logo hover little effect
+  const logo = document.getElementById('logo');
+  logo.addEventListener('mouseenter', ()=> logo.style.transform = 'rotate(-6deg) scale(1.05)');
+  logo.addEventListener('mouseleave', ()=> logo.style.transform = '');
+
+  // contact form (prototype)
+  function handleSubmit(e){
+    e.preventDefault();
+    const name = document.getElementById('name').value.trim();
+    const email = document.getElementById('email').value.trim();
+    const msg = document.getElementById('message').value.trim();
+    // Prototype behavior: open mailto
+    const subject = encodeURIComponent('Contact from portfolio — ' + name);
+    const body = encodeURIComponent(msg + '\n\n---\n' + name + '\n' + email);
+    window.location.href = `mailto:your-email@example.com?subject=${subject}&body=${body}`;
+  }
+
+  // download resume (prototype)
+  function downloadResume(e){
+    e.preventDefault();
+    // Replace URL below with your real resume file URL when available
+    const resumeURL = 'resume.pdf';
+    // If you want to force a download in prototype:
+    const a = document.createElement('a');
+    a.href = resumeURL;
+    a.download = 'YourName_Resume.pdf';
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+  }
+
+  // year
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  // small accessibility: close mobile menu on navigation
+  mobileMenu.querySelectorAll('button[data-target]').forEach(b=>{
+    b.addEventListener('click', ()=> mobileMenu.style.display='none');
+  });
+</script>
+</body>
+</html>
