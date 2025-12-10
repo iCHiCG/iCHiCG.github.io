@@ -11,7 +11,7 @@
    
 
 
-    /* ====== Simple reset ====== */
+    /* ======Simple====== */
     * {box-sizing: border-box}
     html,body {height:100%}
     body {
@@ -25,7 +25,7 @@
       line-height:1.5;
     }
 
-    /* ====== Layout ====== */
+    /*Layout*/
     .container {max-width:1100px;margin:0 auto;padding:24px}
     header {position:fixed;left:0;right:0;top:0;z-index:60;background:#0080ffa7;backdrop-filter:blur(5px);border-bottom:1px solid rgba(15,23,42,0.06)}
     .nav-inner {display:flex;align-items:center;justify-content:space-between;max-width:1100px;margin:0 auto;padding:10px 24px}
@@ -49,7 +49,7 @@
 
     main {padding-top:86px}
 
-    /* ====== Hero ====== */
+    /*Hero*/
     .hero {display:grid;grid-template-columns:1fr;gap:20px;align-items:center;padding:48px 24px}
     .hero-inner {display:flex;flex-direction:column;gap:18px}
     .title {font-size:34px;font-weight:800;line-height:1.02}
@@ -64,15 +64,15 @@
       box-shadow:0 8px 30px rgba(2,6,23,0.04)
     }
     
-    .card.hero-card {   /* เพิ่ม class แยกเฉพาะ hero */
+    .card.hero-card { 
   background: none;
   border: none;
   box-shadow: none;
-  padding: 0;   /* ถ้าอยากให้รูปเต็ม */
+  padding: 0;  
 }
 
 
-    /* hero image */
+    
     .hero-art {
   width:50%;
   max-width:420px;
@@ -88,12 +88,12 @@
 }
 
 
-    /* ====== Sections ====== */
+    /*Sections*/
     section {padding:48px 0}
     h2 {font-size:20px;margin:0 0 8px 0;font-weight:700}
     p.lead {color:#64748b;margin:0 0 16px 0}
 
-    /* Project grid */
+    /*Project grid*/
     .grid {display:grid;gap:16px}
     .grid.cols-3 {grid-template-columns:repeat(3,1fr)}
     .grid.cols-2 {grid-template-columns:repeat(2,1fr)}
@@ -104,9 +104,9 @@
       overflow:hidden;
     }
     .project:hover {transform:translateY(-8px);box-shadow:0 18px 40px rgba(2,6,23,0.08)}
-    .project-thumb {height:160px;border-radius:10px;background:#eef2ff;display:flex;align-items:center;justify-content:center;color:#93c5fd;margin-bottom:10px}
+    .project-thumb {height:160px;border-radius:10px;background:#ffffff;display:flex;align-items:center;justify-content:center;color:#93c5fd;margin-bottom:10px}
 
-    /* Skills */
+    /*Skills*/
     .skills-grid {display:flex;flex-wrap:wrap;gap:10px}
     .skill {padding:10px 12px;border-radius:10px;background:#fff;border:1px solid rgba(15,23,42,0.04);min-width:120px;text-align:center}
 
@@ -118,7 +118,7 @@
 
     footer {padding:24px 0;color:#94a3b8;text-align:center;border-top:1px solid rgba(15,23,42,0.04);margin-top:32px}
 
-    /* ====== Animations & reveal ====== */
+    /*Animations*/
     .float {animation:float 3s ease-in-out infinite}
     @keyframes float {
       0% {transform:translateY(0)}
@@ -129,22 +129,136 @@
     .fade-in {opacity:0;transform:translateY(12px);transition:opacity .6s ease, transform .6s ease}
     .in-view {opacity:1;transform:none}
 
-    /* ====== Responsive ====== */
-    @media (min-width:768px) {
-      .hero {grid-template-columns:1fr 420px;padding:64px 24px}
-      nav ul {gap:12px}
-      .hamburger {display:none}
+   /* Responsive */
+
+    /* Desktop/Tablet */
+    @media (min-width: 768px) {
+      .hero {
+        /* Hero 2 */
+        grid-template-columns: 1fr 420px; 
+        padding: 64px 24px;
+      }
+      nav ul {
+        gap: 12px;
+      }
+      .hamburger {
+        display: none;
+      }
+      .grid.cols-3 {
+        grid-template-columns: repeat(3, 1fr);
+      }
     }
-    @media (max-width:767px) {
-      .nav-inner {padding:8px 16px}
-      nav ul {display:none}
-      .hamburger {display:inline-flex}
-      .grid.cols-3 {grid-template-columns:repeat(2,1fr)}
-      .title {font-size:28px}
+
+    /*Smal*/
+    @media (max-width: 1150px) {
+      .container {
+        padding: 24px 16px; /* ลด padding ด้านข้าง */
+      }
     }
-    @media (max-width:520px) {
-      .grid.cols-3 {grid-template-columns:1fr}
-      .hero-art {height:200px}
+
+    /*Mobile*/
+    @media (max-width: 767px) {
+      
+      .nav-inner {
+        padding: 8px 16px;
+      }
+      nav ul {
+        display: none;
+      }
+      .hamburger {
+        display: inline-flex;
+      }
+      
+      /*Hero Section*/
+      .hero {
+        grid-template-columns: 1fr;
+        padding: 40px 16px;
+        text-align: center;
+        
+        display: flex;
+        flex-direction: column; 
+        align-items: center; 
+        gap: 20px;
+      }
+      .hero-inner {
+        order: 1;
+        text-align: center;
+        width: 100%;
+      }
+      .hero-art {
+        order: 2; 
+        width: 80%;
+        max-width: 300px;
+        height: auto;
+        margin: 0 auto;
+        display: block;
+      }
+      .hero-actions {
+        justify-content: center;
+      }
+      .title {
+        font-size: 28px;
+      }
+      .typing-effect {
+        /* มือถือ */
+        animation: typing-mobile 5s steps(18) forwards, blink 0.75s step-end infinite;
+      }
+      
+      /*Keyframeมือถือ */
+      @keyframes typing-mobile {
+        from { width: 0 }
+        to { width: 18ch }
+      }
+
+      /*Profile*/
+      #profile {
+        flex-direction: column; /* เปลี่ยนเป็น stack แนวตั้ง */
+        text-align: center;
+        padding: 30px 16px;
+      }
+      .profile-pic {
+        width: 150px; /* ลดขนาดรูปโปรไฟล์ */
+        height: 150px;
+        margin-bottom: 20px;
+      }
+      .profile-info ul {
+        text-align: left;
+        margin: 0 auto;
+        max-width: 300px;
+      }
+
+      /*Grid*/
+      .grid.cols-3 {
+        grid-template-columns: 1fr; 
+      }
+      .grid.cols-2 {
+        grid-template-columns: 1fr;
+      }
+      
+      /*Skills/Experience Grid*/
+      .skills-grid {
+        justify-content: center; 
+      }
+      .skill {
+        min-width: unset;
+      }
+
+      /*Contact Section*/
+      .contact-btn {
+        flex-grow: 1; 
+        justify-content: center;
+      }
+      .music-popup {
+        bottom: 20px;
+        right: 20px;
+        left: 20px; 
+        width: auto;
+      }
+      
+      /* footer */
+      footer {
+        padding: 16px 0;
+      }
     }
 
 /* อนิเมชั่นสั่นเล็กๆ */
@@ -182,7 +296,7 @@
 /* กรอบสายรุ้งหมุน */
 .rainbow-border {
   position: absolute;
-  top: -4px; left: -4px; right: -4px; bottom: -4px; /* ทำให้ล้อมรูปพอดี */
+  top: -4px; left: -4px; right: -4px; bottom: -4px; 
   border-radius: 50%;
   border: 4px solid transparent;
   background: conic-gradient(rgb(255, 255, 255), rgb(0, 208, 255), rgb(45, 206, 255), rgb(219, 255, 37));
@@ -207,7 +321,7 @@
 /* พิมพ์ทีละตัว */
 @keyframes typing {
   from { width: 0 }
-  to { width: 17ch } /* จำนวนตัวอักษร Pattanasak Portfolio */
+  to { width: 17ch } 
 }
 
 /* cursor กระพริบ */
@@ -238,7 +352,7 @@
   box-shadow: 0 8px 20px rgba(0,0,0,0.08);
 }
 
-/* ตัวอย่างสีแบรนด์ */
+/* อะไรน้อง */
 .contact-btn.youtube { background:#ff0000; color:white; }
 .contact-btn.facebook { background:#1877f2; color:white; }
 .contact-btn.instagram { background:linear-gradient(45deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888); color:white; }
@@ -460,12 +574,12 @@
   <!-- HERO -->
   <section id="about" class="hero">
     <div class="hero-inner card fade-in">
-      <div class="badge">Ready!</div>
+      <div class="badge">Next Station is University!!</div>
       <h1 class="title">Hello! Welcome to <span class="accent typing-effect">Pattanasak Portfolio</span></h1>
-      <p class="subtitle">คนที่น่ารักที่สุดในโลก</p>
+      <p class="subtitle">คำว่าความพยายาม ไม่เคยทำร้ายสักคนที่ตั้งใจ</p>
 
       <div class="hero-actions">
-        <button class="btn-view2" onclick="scrollToId('projects')">Ready</button>
+        <button class="btn-view2" onclick="scrollToId('projects')">Let's go!</button>
         <button class="btn-view" onclick="scrollToId('contact')">Contact</button>
       </div>
 
@@ -495,8 +609,8 @@
        <li><strong>ชื่อเล่น:</strong> ยูริ</li>
       <li><strong>โรงเรียน:</strong> ชุมพลโพนพิสัย</li>
       <li><strong>เกิดวันที่:</strong> 7 ธันวาคม 2550</li>
-      <li><strong>ความสนใจ:</strong> คอมพิวเตอร์, การเขียนโปรแกรม, การออกแบบเว็บไซต์</li>
-      <li><strong>เป้าหมาย:</strong> พัฒนาทักษะด้าน Frontend และ UI/UX Design</li>
+      <li><strong>ความสนใจ:</strong> การเขียนโปรแกรม, การออกแบบเว็บไซต์, หุ่นยนต์, กราฟิก</li>
+      <li><strong>เป้าหมายในชีวิต:</strong> พัฒนาทักษะด้าน Frontend และ Backend พร้อมทั้งUX/UI design, สร้างนวัตกรรมใหม่ๆ, สร้างชื่อเสียงให้กับประเทศ</li>
     </ul>
   </div>
 </section>
@@ -506,21 +620,21 @@
   <!-- PROJECTS -->
   <section id="projects">
     <h2>Projects</h2>
-    <p class="lead">ผลงานที่ภาคภูมิใจ</p>
+    <p class="lead">ผลงานเว็บไซต์</p>
 
     <div class="grid cols-3" id="projectsGrid">
       <article class="project fade-in">
         <div class="project-thumb">
-          <img src="img/WEB1.png" width="auto" height="120">
+          <img src="img/webfff.png" width="auto" height="120">
         </div>
         <h3 style="margin:0 0 6px 0">เว็บสุ่มอาหาร วันนี้กินอะไรดี</h3>
         <p style="margin:0;color:#64748b;font-size:14px">หากคุณกำลังประสบปัญหา วันนี้จะกินข้าวกับอะไรดี เว็บนี้สามารถช่วยคุณได้แน่นอน!</p>
         <div style="display:flex;gap:8px;margin-top:12px">
-          <button class="btn-view" onclick="openPopup('img/WEB1.png')">View</button>
-          <a href="https://testwebwannikinaraide.web.app/" class="btn-view" style="padding:8px 10px">เข้าใช้งาน</a>
+          <button class="btn-view" onclick="openPopup('img/webfff.png')">View</button>
+          <a href="https://ichicg.github.io/WEBWANNIKINARAIDEE02.github.io/" class="btn-view" style="padding:8px 10px">เข้าใช้งาน</a>
         </div>
       </article>
-<!-- Popup -->
+<!-- Popupนะ -->
   <div id="popupBox" class="popup" onclick="closePopup()">
     <span>&times;</span>
     <img id="popupImg" src="">
@@ -540,36 +654,28 @@
   </script>
 
       <article class="project fade-in">
-        <div class="project-thumb">ภาพโปรเจค 2</div>
-        <h3 style="margin:0 0 6px 0">Project Title 2</h3>
-        <p style="margin:0;color:#64748b;font-size:14px">คำอธิบาย</p>
+        <div class="project-thumb"><img src="img/Old web.png" width="auto" height="120">
+        </div>
+        <h3 style="margin:0 0 6px 0">Web Portfolio เวอร์ชั่นแรก</h3>
+        <p style="margin:0;color:#64748b;font-size:14px">เป็นผลงานชิ้นแรกๆที่ได้ลองเรียนรู้ในการสร้างเว็บไซต์ และการออกแบบUX/UIควบคู่กัน รวมทั้งในเรื่องของResponsiveที่สามารถรองรับกับขนาดของจอภาพในแต่ละเครื่องให้มีประสิทธิภาพมากที่สุด โดยใช้โปรแกรม Adobe Muse!</p>
         <div style="display:flex;gap:8px;margin-top:12px">
-         <button class="btn-view">View</button>
-          <a href="#" class="btn-view" style="padding:8px 10px">ดูเพิ่มเติม</a>
+         <button class="btn-view" onclick="openPopup('img/Old web.png')">View</button>
+          <a href="https://pattanasak-p0rtfolio.web.app/index.html" class="btn-view" style="padding:8px 10px">เข้าใช้งาน</a>
         </div>
       </article>
-
+      
       <article class="project fade-in">
-        <div class="project-thumb">ภาพโปรเจค 2</div>
-        <h3 style="margin:0 0 6px 0">Project Title 2</h3>
-        <p style="margin:0;color:#64748b;font-size:14px">คำอธิบาย</p>
-        <div style="display:flex;gap:8px;margin-top:12px">
-         <button class="btn-view">View</button>
-          <a href="#" class="btn-view" style="padding:8px 10px">ดูเพิ่มเติม</a>
+        <div class="project-thumb"><img src="img/web new1121212.png" width="auto" height="120">
         </div>
-      </article>
-  
-       <article class="project fade-in">
-        <div class="project-thumb">ภาพโปรเจค 2</div>
-        <h3 style="margin:0 0 6px 0">Project Title 2</h3>
-        <p style="margin:0;color:#64748b;font-size:14px">คำอธิบาย</p>
+        <h3 style="margin:0 0 6px 0">Web Portfolio เวอร์ชั่นล่าสุด</h3>
+        <p style="margin:0;color:#64748b;font-size:14px">จัดทำขึ้นมาเพื่อนำมาใช้ประโยชน์ในหลายๆ ด้าน เป็นพื้นที่ที่รวบรวมผลงาน ประสบการณ์ต่างๆ เพื่อให้ทุกคนได้รู้จักตัวตนของ"ยูริ"มากขึ้น!</p>
         <div style="display:flex;gap:8px;margin-top:12px">
-         <button class="btn-view">View</button>
-          <a href="#" class="btn-view" style="padding:8px 10px">ดูเพิ่มเติม</a>
+         <button class="btn-view" onclick="openPopup('img/web new1121212.png')">View</button>
+          <a href="#" class="btn-view" style="padding:8px 10px">เข้าใช้งาน</a>
         </div>
       </article>
 
-      <!-- เพิ่มการ์ดโปรเจคเพิ่มเติมได้ตามต้องการ -->
+      
     </div>
   </section>
 
@@ -580,11 +686,37 @@
 
     <div class="skills-grid card fade-in" style="padding:12px">
       
-      <div class="skill">HTML / CSS</div>
+      <div class="skill">พื้นฐานการเขียน HTML/CSS</div>
+      <div class="skill">พื้นฐานการเขียนภาษา Python</div>
+      <div class="skill">พื้นฐานการเขียนภาษา C++</div>
+      <div class="skill">พื้นฐานการเขียนภาษา Java</div>
+      <div class="skill">ตัดต่อรูปภาพด้วย Adobe Photoshop</div>
+      <div class="skill">ตัดต่อวิดีโอด้วย Adobe Premiere pro</div>
+    </div>
+  </section>
+
+
+  <!-- การใช้โปรแกรม -->
+  <section id="skills">
+    <h2>Experience</h2>
+    <p class="lead">ประสบการณ์การทำงาน</p>
+
+    <div class="skills-grid card fade-in" style="padding:12px">
       
-      
-      
-      
+      <div class="skill"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Visual_Studio_Code_1.35_icon.svg/1024px-Visual_Studio_Code_1.35_icon.svg.png" width="60px" height="auto"></div>
+      <div class="skill"><img src="https://sc.filehippo.net/images/t_app-icon-s/p/11787910-96d2-11e6-ab89-00163ec9f5fa/403594526/xampp-logo" width="60px" height="auto"></div>
+      <div class="skill"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0c/Blender_logo_no_text.svg/939px-Blender_logo_no_text.svg.png" width="70px" height="auto"></div>
+      <div class="skill"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/af/Adobe_Photoshop_CC_icon.svg/250px-Adobe_Photoshop_CC_icon.svg.png" width="60px" height="auto"></div>
+      <div class="skill"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fb/Adobe_Illustrator_CC_icon.svg/2048px-Adobe_Illustrator_CC_icon.svg.png" width="60px" height="auto"></div>
+      <div class="skill"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/40/Adobe_Premiere_Pro_CC_icon.svg/512px-Adobe_Premiere_Pro_CC_icon.svg.png" width="60px" height="auto"></div>
+      <div class="skill"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/cb/Adobe_After_Effects_CC_icon.svg/1200px-Adobe_After_Effects_CC_icon.svg.png" width="60px" height="auto"></div>
+      <div class="skill"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f5/Adobe_Muse_CC_icon.svg/2101px-Adobe_Muse_CC_icon.svg.png" width="60px" height="auto"></div>
+      <div class="skill"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/75/Adobe_Dreamweaver_CC_icon.svg/2101px-Adobe_Dreamweaver_CC_icon.svg.png" width="60px" height="auto"></div>
+      <div class="skill"><img src="https://play-lh.googleusercontent.com/AmzHCh6UEelYfh9AfWXh1WIOC0Z_Z69N9bTvEi-hbRhDe7XL04xuuQfvQXCKLHSHcgVk" width="60px" height="auto"></div>
+      <div class="skill"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/73/Arduino_IDE_logo.svg/2048px-Arduino_IDE_logo.svg.png" width="60px" height="auto"></div>
+      <div class="skill"><img src="https://www.snc.co.th/upload/20862/8qwuNnqooq.png" width="60px" height="auto"></div>
+      <div class="skill"><img src="" width="60px" height="auto"></div>
+      <div class="skill"><img src="" width="60px" height="auto"></div>
     </div>
   </section>
 
@@ -673,7 +805,7 @@
         <textarea id="message" placeholder="Text here*" rows="6" required></textarea>
         <div style="display:flex;gap:8px;flex-wrap:wrap">
           <button type="submit"  class="btn-view2">Send</button>
-          <a href="img/kku (3).pdf"class="btn-view">Download Portfolio</a>
+          <a href="https://www.patreon.com/ICHI_CH"class="btn-view">Donate!</a>
         </div>
       </form>
 
